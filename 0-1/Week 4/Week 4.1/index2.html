@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let timeout;
+    function debounceDiv(){
+        clearTimeout(timeout);
+        timeout = setTimeout(function(){
+            answerDiv();
+        },100)
+    }
+    function answerDiv(){
+        const a = parseInt(document.getElementById("a").value);
+        const b = parseInt(document.getElementById("b").value);
+        const c = parseInt(document.getElementById("c").value);
+        fetch(`https://sum-server.100xdevs.com/interest?principal=${a}&rate=${b}&time=${c}`)
+        .then(function(response){
+            console.log(response);
+            response.text()
+            .then(function(ans){
+                console.log(ans);
+                document.getElementById("result1").innerHTML=ans;
+            })
+        })
+    }
+</script>
+<body>
+    <input oninput="debounceDiv()" id="a" type="text">
+    <input oninput="debounceDiv()" id="b" type="text">
+    <input oninput="debounceDiv()" id="c" type="text">
+    <div id="result1"></div>
+    <div id="result2"></div>
+</body>
+</html>
