@@ -2,7 +2,7 @@ import { Client } from "pg";
 
 const client = new Client({
     connectionString:
-        "postgresql://princebhayani127:Sg8mnHcvOzX6@ep-soft-cherry-a1yj5i6g.ap-southeast-1.aws.neon.tech/test?sslmode=require",
+        "",
 });
 
 
